@@ -1,4 +1,4 @@
-{% set version = '3.0.1' %}
+{% set version = '3.0.1.1' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,12 +11,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gplots_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gplots/gplots_{{ version }}.tar.gz
-  sha256: 343df84327ac3d03494992e79ee3afc78ba3bdc08af9a305ee3fb0a38745cb0a
+  sha256: 7db103f903a25d174cddcdfc7b946039b61e236c95084b90ad17f1a41da3770c
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
+  noarch: generic
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -72,6 +73,7 @@ about:
     ''plotmeans''), - spacing points in an x-y plot so they don''t overlap (''space'').'
 
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
@@ -87,15 +89,15 @@ extra:
 # Depends: R (>= 3.0)
 # Imports: gtools, gdata, stats, caTools, KernSmooth
 # Suggests: grid, MASS
-# Version: 3.0.1
+# Version: 3.0.1.1
 # Date: 2016-03-30
 # Author: Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert Gentleman, Wolfgang Huber Andy Liaw, Thomas Lumley, Martin Maechler, Arni Magnusson, Steffen Moeller, Marc Schwartz, Bill Venables
 # Maintainer: Gregory R. Warnes <greg@warnes.net>
 # License: GPL-2
 # NeedsCompilation: no
-# Packaged: 2016-03-30 17:32:42 UTC; gwarnes1
+# Packaged: 2019-01-27 14:55:38 UTC; hornik
 # Repository: CRAN
-# Date/Publication: 2016-03-30 21:04:18
+# Date/Publication: 2019-01-27 16:00:39 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
